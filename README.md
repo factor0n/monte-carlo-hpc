@@ -114,21 +114,30 @@ The **speedup** is defined as:
 S(p) = \frac{T_1}{T_p}
 
 
-## 8. Build System
+## 7. Build System
 
 This project uses **Make** to automate compilation, execution, testing, and performance evaluation.
 
-### 8.1 Requirements
+### 7.1 Requirements
 
 - GCC with OpenMP support
 - Make
 - Linux or macOS
-make	Compile the OpenMP version
-run	Run the main program
-test	Run unit tests
-speedup	Measure OpenMP speedup
-mpi	Compile MPI version
-clean	Remove build artifacts
+######################################################
+
+make : compile OpenMP version
+
+make run : run OpenMP simulation
+
+make test : run unit tests
+
+make bench : measure OpenMP speedup
+
+make mpi : compile MPI version
+
+make run-mpi : run MPI simulation
+
+make clean : remove binaries and object files
 
 
 Ayoub Gounnou
