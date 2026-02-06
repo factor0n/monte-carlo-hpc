@@ -70,6 +70,8 @@ monte-carlo-hpc/
 │
 └── docs/
     └── DOCUMENTATION.md
+
+    
 ## 5. OpenMP Parallelization
 
 ### Strategy
