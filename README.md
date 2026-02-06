@@ -138,6 +138,6 @@ make run-mpi : run MPI simulation
 
 make clean : remove binaries and object files
 
-
-Ayoub Gounnou
+#author
+##Ayoub Gounnou
 Master in High-Performance Computing and Simulation
