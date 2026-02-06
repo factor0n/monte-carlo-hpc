@@ -49,7 +49,6 @@ The algorithm is **embarrassingly parallel**, making it ideal for OpenMP and MPI
 
 ## 4. Code Architecture
 
-```text
 monte-carlo-hpc/
 │
 ├── Makefile
@@ -86,7 +85,6 @@ is independent.
 
 ### Implementation Example
 
-```c
 #pragma omp parallel reduction(+:sum,sum_sq)
 {
     unsigned int seed = time(NULL) ^ omp_get_thread_num();
@@ -110,7 +108,6 @@ This section evaluates the performance improvement obtained using **OpenMP paral
 
 The **speedup** is defined as:
 
-```math
 S(p) = \frac{T_1}{T_p}
 
 
