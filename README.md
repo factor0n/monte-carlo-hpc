@@ -48,7 +48,7 @@ The algorithm is **embarrassingly parallel**, making it ideal for OpenMP and MPI
 ---
 
 ## 4. Code Architecture
-{
+
 monte-carlo-hpc/
 │
 ├── Makefile
@@ -70,7 +70,7 @@ monte-carlo-hpc/
 │
 └── docs/
     └── DOCUMENTATION.md
-}
+
     
 ## 5. OpenMP Parallelization
 
@@ -90,7 +90,7 @@ is independent.
 #pragma omp parallel reduction(+:sum,sum_sq)
 {
     unsigned int seed = time(NULL) ^ omp_get_thread_num();
-
+    
     #pragma omp for
     for (int i = 0; i < n_samples; i++) {
         double u = (double) rand_r(&seed) / RAND_MAX;
