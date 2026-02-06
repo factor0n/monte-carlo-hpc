@@ -71,3 +71,65 @@ monte-carlo-hpc/
 │
 └── docs/
     └── DOCUMENTATION.md
+## 5. OpenMP Parallelization
+
+### Strategy
+
+The main Monte Carlo sampling loop is parallelized using OpenMP.
+The computation is embarrassingly parallel since each random sample
+is independent.
+
+- The `#pragma omp parallel for` directive distributes iterations
+  across threads
+- A `reduction` clause is used to safely accumulate partial sums
+- Each thread uses an independent random seed to avoid correlation
+
+### Implementation Example
+
+```c
+#pragma omp parallel reduction(+:sum,sum_sq)
+{
+    unsigned int seed = time(NULL) ^ omp_get_thread_num();
+
+    #pragma omp for
+    for (int i = 0; i < n_samples; i++) {
+        double u = (double) rand_r(&seed) / RAND_MAX;
+        double x = lower + u * (upper - lower);
+        double fx = my_function(x);
+
+        sum += fx;
+        sum_sq += fx * fx;
+    }
+}
+
+## 6. Performance Measurement (Speedup)
+
+This section evaluates the performance improvement obtained using **OpenMP parallelization** compared to the sequential implementation of the Monte Carlo algorithm.
+
+### 6.1 Definition of Speedup
+
+The **speedup** is defined as:
+
+```math
+S(p) = \frac{T_1}{T_p}
+
+
+## 8. Build System
+
+This project uses **Make** to automate compilation, execution, testing, and performance evaluation.
+
+### 8.1 Requirements
+
+- GCC with OpenMP support
+- Make
+- Linux or macOS
+make	Compile the OpenMP version
+run	Run the main program
+test	Run unit tests
+speedup	Measure OpenMP speedup
+mpi	Compile MPI version
+clean	Remove build artifacts
+
+
+Ayoub Gounnou
+Master in High-Performance Computing and Simulation
