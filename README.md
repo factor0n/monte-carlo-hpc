@@ -48,7 +48,7 @@ The algorithm is **embarrassingly parallel**, making it ideal for OpenMP and MPI
 ---
 
 ## 4. Code Architecture
-
+{
 monte-carlo-hpc/
 │
 ├── Makefile
@@ -70,7 +70,7 @@ monte-carlo-hpc/
 │
 └── docs/
     └── DOCUMENTATION.md
-
+}
     
 ## 5. OpenMP Parallelization
 
